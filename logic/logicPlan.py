@@ -99,7 +99,14 @@ def sentence3() -> Expr:
     (Project update: for this question only, [0] and _t are both acceptable.)
     """
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    alive_1 = PropSymbolExpr("PacmanAlive",1)
+    alive_0 = PropSymbolExpr("PacmanAlive",0)
+    killed_0 = PropSymbolExpr("PacmanKilled",0)
+    born_0 = PropSymbolExpr("PacmanBorn",0)
+    sentence_one = alive_1  % ((alive_0 & ~killed_0) |  (~alive_0 & born_0))
+    sentence_two = ~(PropSymbolExpr("PacmanAlive",0) & PropSymbolExpr("PacmanBorn",0))
+    sentence_three = PropSymbolExpr("PacmanBorn",0)
+    return Expr('&',sentence_one,sentence_two,sentence_three) 
     "*** END YOUR CODE HERE ***"
 
 def findModel(sentence: Expr) -> Dict[Expr, bool]:

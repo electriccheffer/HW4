@@ -1,0 +1,107 @@
+Starting on 10-31 at 18:07:02
+
+Question q1
+===========
+
+*** PASS: test_cases/q1/correctSentence1.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence2.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence3.test
+*** 	PASS
+*** Method not implemented: entails at line 141 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q1: 0/2 ###
+
+
+Question q2
+===========
+
+*** Method not implemented: atLeastOne at line 175 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q2: 0/2 ###
+
+
+Question q3
+===========
+
+*** Testing checkLocationSatisfiability
+[LogicAgent] using problem type LocMapProblem
+Ending game
+Average Score: 0.0
+Scores:        0.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** Method not implemented: checkLocationSatisfiability at line 336 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q3: 0/4 ###
+
+
+Question q4
+===========
+
+[LogicAgent] using problem type PositionPlanningProblem
+*** Method not implemented: positionLogicPlan at line 363 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q4: 0/4 ###
+
+
+Question q5
+===========
+
+[LogicAgent] using problem type FoodPlanningProblem
+*** Method not implemented: foodLogicPlan at line 392 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q5: 0/3 ###
+
+
+Question q6
+===========
+
+[LogicAgent] using problem type LocalizationProblem
+rendering walls beforehand
+*** Method not implemented: localization at line 411 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q6: 0/4 ###
+
+
+Question q7
+===========
+
+[LogicAgent] using problem type MappingProblem
+*** Method not implemented: mapping at line 443 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q7: 0/3 ###
+
+
+Question q8
+===========
+
+[LogicAgent] using problem type SLAMProblem
+*** Method not implemented: slam at line 475 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q8: 0/4 ###
+
+
+Finished at 18:07:02
+
+Provisional grades
+==================
+Question q1: 0/2
+Question q2: 0/2
+Question q3: 0/4
+Question q4: 0/4
+Question q5: 0/3
+Question q6: 0/4
+Question q7: 0/3
+Question q8: 0/4
+------------------
+Total: 0/26
