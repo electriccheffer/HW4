@@ -72,7 +72,16 @@ def sentence2() -> Expr:
     (not D) implies C
     """
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    variable_one = Expr('A')
+    variable_two = Expr('B')
+    variable_three = Expr('C')
+    variable_four = Expr('D')
+    
+    sentence_one = variable_three % (variable_two | variable_four)
+    sentence_two = variable_one >> (~variable_two & ~variable_four)
+    sentence_three = ~(variable_two&~variable_three) >> variable_one
+    sentence_four = ~variable_four >> variable_three
+    return Expr('&',sentence_one,sentence_two,sentence_three,sentence_four) 
     "*** END YOUR CODE HERE ***"
 
 
