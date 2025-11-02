@@ -22,9 +22,9 @@ import util
 import sys
 import logic
 import game
-
+import pycosat
 from logic import conjoin, disjoin
-from logic import PropSymbolExpr, Expr, to_cnf, pycoSAT, parseExpr, pl_true
+from logic import PropSymbolExpr, Expr, to_cnf, pycoSAT, parseExpr, pl_true, mapSymbolAndIndices, conjuncts,exprClausesToIndexClauses,indexModelToExprModel
 
 import itertools
 import copy
@@ -116,6 +116,18 @@ def findModel(sentence: Expr) -> Dict[Expr, bool]:
     cnf_sentence = to_cnf(sentence)
     return pycoSAT(cnf_sentence)
 
+def allModels(sentence:Expr):
+    cnf_sentence = to_cnf(sentence)
+    pieces = conjuncts(cnf_sentence)
+    symbol_dictionary = mapSymbolAndIndices(pieces)
+    clauses  = exprClausesToIndexClauses(pieces,symbol_dictionary)
+    models = []
+    for model_temp in pycosat.itersolve(clauses):
+        model = indexModelToExprModel(model_temp,symbol_dictionary)
+        models.append(model)
+    return models
+
+
 def findModelCheck() -> Dict[Any, bool]:
     """Returns the result of findModel(Expr('a')) if lower cased expressions were allowed.
     You should not use findModel or Expr in this method.
@@ -138,8 +150,11 @@ def entails(premise: Expr, conclusion: Expr) -> bool:
     """Returns True if the premise entails the conclusion and False otherwise.
     """
     "*** BEGIN YOUR CODE HERE ***"
-    model = findModel(premise)
-    return pl_true(conclusion,model)
+    models = allModels(premise)
+    for model in models:
+        if pl_true(conclusion,model) == False: 
+            return False
+    return True
     "*** END YOUR CODE HERE ***"
 
 def plTrueInverse(assignments: Dict[Expr, bool], inverse_statement: Expr) -> bool:
