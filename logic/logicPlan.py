@@ -188,7 +188,12 @@ def atLeastOne(literals: List[Expr]) -> Expr:
     True
     """
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    expression = literals[0] 
+    for index,literal in enumerate(literals):
+        if index == 0: 
+            continue
+        expression = Expr('|',expression,literal)
+    return expression
     "*** END YOUR CODE HERE ***"
 
 
