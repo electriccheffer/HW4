@@ -26,7 +26,7 @@ import pycosat
 from logic import conjoin, disjoin
 from logic import PropSymbolExpr, Expr, to_cnf, pycoSAT, parseExpr, pl_true, mapSymbolAndIndices, conjuncts,exprClausesToIndexClauses,indexModelToExprModel
 
-import itertools
+from itertools import combinations
 import copy
 
 pacman_str = 'P'
@@ -205,7 +205,13 @@ def atMostOne(literals: List[Expr]) -> Expr:
     itertools.combinations may be useful here.
     """
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    combos = combinations(literals,2)
+    first, second = next(combos)
+    expression = Expr('|',~first,~second)
+    for first,second in combos: 
+        sub_expression = Expr('|',first,~second)
+        expression = expression & sub_expression
+    return expression
     "*** END YOUR CODE HERE ***"
 
 
@@ -216,7 +222,9 @@ def exactlyOne(literals: List[Expr]) -> Expr:
     the expressions in the list is true.
     """
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    expression = atLeastOne(literals)
+    other_expression = atMostOne(literals)
+    return expression & other_expression
     "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________
