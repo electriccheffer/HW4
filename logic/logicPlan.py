@@ -25,7 +25,7 @@ import game
 import pycosat
 from logic import conjoin, disjoin
 from logic import PropSymbolExpr, Expr, to_cnf, pycoSAT, parseExpr, pl_true, mapSymbolAndIndices, conjuncts,exprClausesToIndexClauses,indexModelToExprModel
-
+import itertools
 from itertools import combinations
 import copy
 
@@ -257,7 +257,10 @@ def pacmanSuccessorAxiomSingle(x: int, y: int, time: int, walls_grid: List[List[
         return None
     
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    expression = atLeastOne(possible_causes)
+    current_state = PropSymbolExpr('P',x,y,now)
+    expression = current_state % expression
+    return expression
     "*** END YOUR CODE HERE ***"
 
 
