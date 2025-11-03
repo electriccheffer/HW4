@@ -329,9 +329,47 @@ def pacphysicsAxioms(t: int, all_coords: List[Tuple], non_outer_wall_coords: Lis
             locations on this time step. Consider edge cases. Don't call if None.
     """
     pacphysics_sentences = []
-
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    wall_sentence_list = []
+    
+    for x_position,wallList in enumerate(walls_grid): 
+        for y_position, wall in enumerate(wallList): 
+            if wall is 1: 
+                sentence = PropSymbolExpr('WALL',x_position,y_position,t)
+                sentence = sentence % ~PropSymbolExpr('P',x_position,y_position,t)
+                wall_sentence_list.append(sentence)
+    
+    wall_statement = exactlyOne(wall_sentence_list)
+    pacphysics_sentences.append(wall_statement)
+    
+    position_sentence_list = []
+    for x_position,positionList in enumerate(all_coords):
+        for y_position,_ in enumerate(positionList):
+            sentence = PropSymbolExpr('P',x_position,y_position,t)
+            position_sentence_list.append(sentence)
+
+    position_sentence = exactlyOne(position_sentence_list)
+    pacphysics_sentences.append(position_sentence)
+
+    action_list = []
+    for action in DIRECTIONS: 
+        sentence = PropSymbolExpr(action,None,None,t)
+        action_list.append(sentence)
+    
+    action_statement = exactlyOne(action_list)
+    
+    pacphysics_sentences.append(action_statement)
+
+    if sensorModel is not None: 
+        sensor_model_results = sensorModel(t,non_outer_wall_coords)
+        pacphysics_sentences.append(sensor_model_results)
+
+    if successorAxioms is not None: 
+        successor_axiom_results = successorAxioms(t,walls_grid,non_outer_wall_coords)
+        pacphysics_sentences.append(successor_axiom_results)
+
+
+
     "*** END YOUR CODE HERE ***"
 
     return conjoin(pacphysics_sentences)
