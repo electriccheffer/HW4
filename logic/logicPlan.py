@@ -16,7 +16,7 @@
 In logicPlan.py, you will implement logic planning methods which are called by
 Pacman agents (in logicAgents.py).
 """
-
+from functools import reduce
 from typing import Dict, List, Tuple, Callable, Generator, Any
 import util
 import sys
@@ -189,12 +189,11 @@ def atLeastOne(literals: List[Expr]) -> Expr:
     True
     """
     "*** BEGIN YOUR CODE HERE ***"
-    expression = literals[0] 
-    for index,literal in enumerate(literals):
-        if index == 0: 
-            continue
-        expression = Expr('|',expression,literal)
-    return expression
+    expr = literals[0]
+    for lit in literals[1:]:
+        expr = Expr('|', expr, lit)  # your Expr constructor may differ
+    return expr
+
     "*** END YOUR CODE HERE ***"
 
 
@@ -223,9 +222,13 @@ def exactlyOne(literals: List[Expr]) -> Expr:
     the expressions in the list is true.
     """
     "*** BEGIN YOUR CODE HERE ***"
-    expression = atLeastOne(literals)
-    other_expression = atMostOne(literals)
-    return expression & other_expression
+    at_least_one = reduce(lambda a,b: a | b, literals)
+    # Pairwise negations for atMostOne
+    at_most_one_clauses = [~literals[i] | ~literals[j] 
+                            for i in range(len(literals)) 
+                            for j in range(i+1, len(literals))]
+    at_most_one = conjoin(at_most_one_clauses)
+    return at_least_one & at_most_one
     "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________
@@ -330,50 +333,42 @@ def pacphysicsAxioms(t: int, all_coords: List[Tuple], non_outer_wall_coords: Lis
         - Results of calling successorAxioms(...), describing how Pacman can end in various
             locations on this time step. Consider edge cases. Don't call if None.
     """
-    print("RUNNING pacphysicsTest")
     pacphysics_sentences = []
-    
     "*** BEGIN YOUR CODE HERE ***"
+    for coordinate in all_coords:
+        pacphysics_sentences.append(PropSymbolExpr(wall_str,coordinate[0],coordinate[1]) >> ~PropSymbolExpr(pacman_str,coordinate[0],coordinate[1],time=t))
     
+    pacman_one_place = []
+    for coordinate in non_outer_wall_coords:
+          pacman_one_place.append(PropSymbolExpr(pacman_str,coordinate[0],coordinate[1],time=t)) 
+    
+    expression = to_cnf(exactlyOne(pacman_one_place))
+    pacphysics_sentences.append(expression)
+    
+    direction_list = [PropSymbolExpr(direction, time=t) for direction in DIRECTIONS]
+    at_least_one_action = direction_list[0]
+    for literal in direction_list[1:]:
+        at_least_one_action = at_least_one_action | literal
 
-    wall_sentence_list = []
-   
-   
-    for x_position,wallList in enumerate(walls_grid): 
-        for y_position, wall in enumerate(wallList): 
-            if wall is 1: 
-                sentence = PropSymbolExpr('WALL',x_position,y_position,t)
-                sentence = sentence % ~PropSymbolExpr('P',x_position,y_position,t)
-                wall_sentence_list.append(sentence)
-    if len(wall_sentence_list) != 0: 
-        wall_statement = exactlyOne(wall_sentence_list)
-        pacphysics_sentences.append(wall_statement)
-    
-    position_sentence_list = []
-    for x_position,positionList in enumerate(all_coords):
-        for y_position,_ in enumerate(positionList):
-            sentence = PropSymbolExpr('P',x_position,y_position,t)
-            position_sentence_list.append(sentence)
+    # At most one action (pairwise NOT AND)
+    at_most_one_action = []
+    for i in range(len(direction_list)):
+        for j in range(i+1, len(direction_list)):
+            at_most_one_action.append(~direction_list[i] | ~direction_list[j])
 
-    position_sentence = exactlyOne(position_sentence_list)
-    pacphysics_sentences.append(position_sentence)
-
-    action_list = []
-    for action in DIRECTIONS: 
-        sentence = PropSymbolExpr(action,0,0,t)
-        action_list.append(sentence)
-    
-    action_statement = exactlyOne(action_list)
-    
-    pacphysics_sentences.append(action_statement)
+    # Conjoin all for exactly one
+    action_expression = at_least_one_action
+    for expr in at_most_one_action:
+        action_expression = action_expression & expr
+    pacphysics_sentences.append(to_cnf(action_expression))
 
     if sensorModel is not None: 
-        sensor_model_results = sensorModel(t,non_outer_wall_coords)
-        pacphysics_sentences.append(sensor_model_results)
-
+        pacphysics_sentences.append(sensorModel(t,non_outer_wall_coords))
     
+    if successorAxioms is not None and t > 0: 
+        pacphysics_sentences.append(successorAxioms(t, walls_grid, non_outer_wall_coords))
     "*** END YOUR CODE HERE ***"
-
+    
     return conjoin(pacphysics_sentences)
 
 
@@ -392,6 +387,7 @@ def checkLocationSatisfiability(x1_y1: Tuple[int, int], x0_y0: Tuple[int, int], 
         - a model where Pacman is at (x1, y1) at time t = 1
         - a model where Pacman is not at (x1, y1) at time t = 1
     """
+    
     walls_grid = problem.walls
     walls_list = walls_grid.asList()
     all_coords = list(itertools.product(range(problem.getWidth()+2), range(problem.getHeight()+2)))
