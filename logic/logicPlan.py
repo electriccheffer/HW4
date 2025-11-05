@@ -401,51 +401,26 @@ def checkLocationSatisfiability(x1_y1: Tuple[int, int], x0_y0: Tuple[int, int], 
     KB.append(conjoin(map_sent))
 
     "*** BEGIN YOUR CODE HERE ***"
-    for x, y in all_coords:
-        if (x, y) in walls_list:
-            KB.append(PropSymbolExpr(wall_str,x,y))
-        else:
-            KB.append(~PropSymbolExpr(wall_str,x,y))    
     
-    for x,y in all_coords: 
-        if (x,y) == x0_y0:
-            KB.append(PropSymbolExpr(pacman_str,x,y,time=0))
-        else:
-            KB.append(~PropSymbolExpr(pacman_str,x,y,time=0))
-  
-    for x,y in all_coords: 
-        if (x,y) == x1_y1:
-            continue
-        else:
-            KB.append(~PropSymbolExpr(pacman_str,x,y,time=1))
-   
-    for direction in DIRECTIONS:
-        if direction == action0:
-            KB.append(PropSymbolExpr(direction,time=0))
-        else:
-            KB.append(~PropSymbolExpr(direction,time=0))
-    
-    for direction in DIRECTIONS:
-        if direction == action1:
-            KB.append(PropSymbolExpr(direction,time=1))
-        else:
-            KB.append(~PropSymbolExpr(direction,time=1))
+    KB.append(pacphysicsAxioms(0,all_coords,non_outer_wall_coords,
+                               walls_grid,sensorModel=None,successorAxioms=None))
+    KB.append(pacphysicsAxioms(1,all_coords,non_outer_wall_coords,
+                               walls_grid,sensorModel=None,successorAxioms=allLegalSuccessorAxioms))
 
-    kb_other_model = copy.deepcopy(KB)
-    
-    KB.append(PropSymbolExpr(pacman_str,x1,y1,time=1))
+    KB.append(logic.PropSymbolExpr(action1, time = 1))
+    KB.append(logic.PropSymbolExpr(action0, time = 0))
 
-    kb_other_model.append(~PropSymbolExpr(pacman_str,x1,y1,time=1))
-    kb_other_model.append(PropSymbolExpr(pacman_str,x1,y1,time=1))
-
-
-    
-    cnf_kb = conjoin(KB)
-    cnf_other_kb = conjoin(kb_other_model)
-    our_model = findModel(cnf_kb)
-    other_model = findModel(cnf_other_kb)
-
-    return (our_model,other_model)
+    KB.append(PropSymbolExpr(pacman_str,x0,y0,time=0))
+    KB_expression =  conjoin(KB)
+    print(KB_expression)
+    print("|||||||||||||||||||")
+    model_pos = findModel(KB_expression & PropSymbolExpr(pacman_str,x1,y1,time=1))
+    model_neg = findModel(KB_expression & ~PropSymbolExpr(pacman_str,x1,y1,time=1))
+    print("positive model")
+    print(model_pos)
+    print("model neg")
+    print(model_neg)
+    return model_pos,model_neg
     "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________

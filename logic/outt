@@ -1,0 +1,145 @@
+Starting on 11-5 at 2:35:39
+
+Question q1
+===========
+
+*** PASS: test_cases/q1/correctSentence1.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence2.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence3.test
+*** 	PASS
+*** PASS: test_cases/q1/entails.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelCheck.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence1.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence2.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence3.test
+*** 	PASS
+*** PASS: test_cases/q1/plTrueInverse.test
+*** 	PASS
+
+### Question q1: 2/2 ###
+
+
+Question q2
+===========
+
+*** PASS: test_cases/q2/atLeastOne.test
+*** 	PASS
+*** PASS: test_cases/q2/atLeastOneCNF.test
+*** 	PASS
+*** PASS: test_cases/q2/atMostOne.test
+*** 	PASS
+*** PASS: test_cases/q2/atMostOneCNF.test
+*** 	PASS
+*** PASS: test_cases/q2/exactlyOne.test
+*** 	PASS
+*** PASS: test_cases/q2/exactlyOneCNF.test
+*** 	PASS
+
+### Question q2: 2/2 ###
+
+
+Question q3
+===========
+
+*** Testing checkLocationSatisfiability
+[LogicAgent] using problem type LocMapProblem
+Ending game
+Average Score: 0.0
+Scores:        0.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** FAIL: test_cases/q3/location_satisfiability1.test
+*** 	Student solution differed from autograder solution
+*** 	Number of variables in student solution: 36
+*** 	Number of variables in correct solution: 44
+*** Testing checkLocationSatisfiability
+[LogicAgent] using problem type LocMapProblem
+Ending game
+Average Score: 0.0
+Scores:        0.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** FAIL: test_cases/q3/location_satisfiability2.test
+*** 	Student solution differed from autograder solution for model_at_x1_y1_1
+*** 	Student model found satisfiable solution but no satisfiable solution exists.
+*** Testing pacphysicsAxioms
+*** PASS: test_cases/q3/pacphysics1.test
+*** Testing pacphysicsAxioms
+*** PASS: test_cases/q3/pacphysics2.test
+*** PASS: test_cases/q3/pacphysics_transition.test
+*** 	PASS
+
+### Question q3: 2/4 ###
+
+
+Question q4
+===========
+
+[LogicAgent] using problem type PositionPlanningProblem
+*** Method not implemented: positionLogicPlan at line 461 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q4: 0/4 ###
+
+
+Question q5
+===========
+
+[LogicAgent] using problem type FoodPlanningProblem
+*** Method not implemented: foodLogicPlan at line 490 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q5: 0/3 ###
+
+
+Question q6
+===========
+
+[LogicAgent] using problem type LocalizationProblem
+rendering walls beforehand
+*** Method not implemented: localization at line 509 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q6: 0/4 ###
+
+
+Question q7
+===========
+
+[LogicAgent] using problem type MappingProblem
+*** Method not implemented: mapping at line 541 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q7: 0/3 ###
+
+
+Question q8
+===========
+
+[LogicAgent] using problem type SLAMProblem
+*** Method not implemented: slam at line 573 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q8: 0/4 ###
+
+
+Finished at 2:35:40
+
+Provisional grades
+==================
+Question q1: 2/2
+Question q2: 2/2
+Question q3: 2/4
+Question q4: 0/4
+Question q5: 0/3
+Question q6: 0/4
+Question q7: 0/3
+Question q8: 0/4
+------------------
+Total: 6/26
