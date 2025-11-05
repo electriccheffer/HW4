@@ -29,9 +29,10 @@ import itertools
 from itertools import combinations
 import copy
 
-pacman_str = 'P'
+
 food_str = 'FOOD'
 wall_str = 'WALL'
+pacman_str = 'P'
 pacman_wall_str = pacman_str + wall_str
 ghost_pos_str = 'G'
 ghost_east_str = 'GE'
@@ -238,7 +239,8 @@ def pacmanSuccessorAxiomSingle(x: int, y: int, time: int, walls_grid: List[List[
     Available actions are ['North', 'East', 'South', 'West']
     Note that STOP is not an available action.
     """
-    now, last = time, time - 1
+    now = time
+    last = time -1 
     possible_causes: List[Expr] = [] # enumerate all possible causes for P[x,y]_t
     # the if statements give a small performance boost and are required for q4 and q5 correctness
     if walls_grid[x][y+1] != 1:
@@ -257,8 +259,8 @@ def pacmanSuccessorAxiomSingle(x: int, y: int, time: int, walls_grid: List[List[
         return None
     
     "*** BEGIN YOUR CODE HERE ***"
-    expression = atLeastOne(possible_causes)
-    current_state = PropSymbolExpr('P',x,y,now)
+    expression = disjoin(possible_causes)
+    current_state = PropSymbolExpr(pacman_str,x,y,time=now)
     expression = current_state % expression
     return expression
     "*** END YOUR CODE HERE ***"
@@ -328,19 +330,24 @@ def pacphysicsAxioms(t: int, all_coords: List[Tuple], non_outer_wall_coords: Lis
         - Results of calling successorAxioms(...), describing how Pacman can end in various
             locations on this time step. Consider edge cases. Don't call if None.
     """
+    print("RUNNING pacphysicsTest")
     pacphysics_sentences = []
-    "*** BEGIN YOUR CODE HERE ***"
-    wall_sentence_list = []
     
+    "*** BEGIN YOUR CODE HERE ***"
+    
+
+    wall_sentence_list = []
+   
+   
     for x_position,wallList in enumerate(walls_grid): 
         for y_position, wall in enumerate(wallList): 
             if wall is 1: 
                 sentence = PropSymbolExpr('WALL',x_position,y_position,t)
                 sentence = sentence % ~PropSymbolExpr('P',x_position,y_position,t)
                 wall_sentence_list.append(sentence)
-    
-    wall_statement = exactlyOne(wall_sentence_list)
-    pacphysics_sentences.append(wall_statement)
+    if len(wall_sentence_list) != 0: 
+        wall_statement = exactlyOne(wall_sentence_list)
+        pacphysics_sentences.append(wall_statement)
     
     position_sentence_list = []
     for x_position,positionList in enumerate(all_coords):
@@ -353,7 +360,7 @@ def pacphysicsAxioms(t: int, all_coords: List[Tuple], non_outer_wall_coords: Lis
 
     action_list = []
     for action in DIRECTIONS: 
-        sentence = PropSymbolExpr(action,None,None,t)
+        sentence = PropSymbolExpr(action,0,0,t)
         action_list.append(sentence)
     
     action_statement = exactlyOne(action_list)
@@ -364,12 +371,7 @@ def pacphysicsAxioms(t: int, all_coords: List[Tuple], non_outer_wall_coords: Lis
         sensor_model_results = sensorModel(t,non_outer_wall_coords)
         pacphysics_sentences.append(sensor_model_results)
 
-    if successorAxioms is not None: 
-        successor_axiom_results = successorAxioms(t,walls_grid,non_outer_wall_coords)
-        pacphysics_sentences.append(successor_axiom_results)
-
-
-
+    
     "*** END YOUR CODE HERE ***"
 
     return conjoin(pacphysics_sentences)
@@ -403,7 +405,51 @@ def checkLocationSatisfiability(x1_y1: Tuple[int, int], x0_y0: Tuple[int, int], 
     KB.append(conjoin(map_sent))
 
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    for x, y in all_coords:
+        if (x, y) in walls_list:
+            KB.append(PropSymbolExpr(wall_str,x,y))
+        else:
+            KB.append(~PropSymbolExpr(wall_str,x,y))    
+    
+    for x,y in all_coords: 
+        if (x,y) == x0_y0:
+            KB.append(PropSymbolExpr(pacman_str,x,y,time=0))
+        else:
+            KB.append(~PropSymbolExpr(pacman_str,x,y,time=0))
+  
+    for x,y in all_coords: 
+        if (x,y) == x1_y1:
+            continue
+        else:
+            KB.append(~PropSymbolExpr(pacman_str,x,y,time=1))
+   
+    for direction in DIRECTIONS:
+        if direction == action0:
+            KB.append(PropSymbolExpr(direction,time=0))
+        else:
+            KB.append(~PropSymbolExpr(direction,time=0))
+    
+    for direction in DIRECTIONS:
+        if direction == action1:
+            KB.append(PropSymbolExpr(direction,time=1))
+        else:
+            KB.append(~PropSymbolExpr(direction,time=1))
+
+    kb_other_model = copy.deepcopy(KB)
+    
+    KB.append(PropSymbolExpr(pacman_str,x1,y1,time=1))
+
+    kb_other_model.append(~PropSymbolExpr(pacman_str,x1,y1,time=1))
+    kb_other_model.append(PropSymbolExpr(pacman_str,x1,y1,time=1))
+
+
+    
+    cnf_kb = conjoin(KB)
+    cnf_other_kb = conjoin(kb_other_model)
+    our_model = findModel(cnf_kb)
+    other_model = findModel(cnf_other_kb)
+
+    return (our_model,other_model)
     "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________

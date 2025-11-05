@@ -12,7 +12,7 @@ grid1 = [[0]*3]*3 # no walls; note that the three lists are the same reference
 grid2 = [[1]*4, [1, 0, 0, 1], [1, 0, 1, 1], [1]*4] # 2x2 inside
 grid3 = [[1]*3]*3 # all walls; note that the three lists are the same reference
 
-ans = [psas(1, 1, 1, grid1), psas(1, 1, 2, grid1), psas(1, 1, 1, grid2), psas(1, 1, 2, grid3)]
+ans = [psas(1, 1, 1, grid1), psas(1, 1, 2, grid1), psas(1, 1,1, grid2), psas(1, 1, 2, grid3)]
 """
 
 # A python expression to be evaluated.  This expression must return the 

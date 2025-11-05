@@ -1,0 +1,150 @@
+Starting on 11-4 at 23:23:36
+
+Question q1
+===========
+
+*** PASS: test_cases/q1/correctSentence1.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence2.test
+*** 	PASS
+*** PASS: test_cases/q1/correctSentence3.test
+*** 	PASS
+*** PASS: test_cases/q1/entails.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelCheck.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence1.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence2.test
+*** 	PASS
+*** PASS: test_cases/q1/findModelSentence3.test
+*** 	PASS
+*** PASS: test_cases/q1/plTrueInverse.test
+*** 	PASS
+
+### Question q1: 2/2 ###
+
+
+Question q2
+===========
+
+*** PASS: test_cases/q2/atLeastOne.test
+*** 	PASS
+*** PASS: test_cases/q2/atLeastOneCNF.test
+*** 	PASS
+*** PASS: test_cases/q2/atMostOne.test
+*** 	PASS
+*** PASS: test_cases/q2/atMostOneCNF.test
+*** 	PASS
+*** PASS: test_cases/q2/exactlyOne.test
+*** 	PASS
+*** PASS: test_cases/q2/exactlyOneCNF.test
+*** 	PASS
+
+### Question q2: 2/2 ###
+
+
+Question q3
+===========
+
+*** Testing checkLocationSatisfiability
+[LogicAgent] using problem type LocMapProblem
+Ending game
+Average Score: 0.0
+Scores:        0.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** PASS: test_cases/q3/location_satisfiability1.test
+*** Testing checkLocationSatisfiability
+[LogicAgent] using problem type LocMapProblem
+Ending game
+Average Score: 0.0
+Scores:        0.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** FAIL: test_cases/q3/location_satisfiability2.test
+*** 	Student solution differed from autograder solution for model_at_x1_y1_1
+*** 	Student model found satisfiable solution but no satisfiable solution exists.
+*** Testing pacphysicsAxioms
+RUNNING pacphysicsTest
+*** FAIL: test_cases/q3/pacphysics1.test
+*** 	Student solution does not combine sentences properly.
+*** 	Make sure you append the items to join with "and", and conjoin at the end.
+*** Testing pacphysicsAxioms
+RUNNING pacphysicsTest
+*** FAIL: test_cases/q3/pacphysics2.test
+*** 	Student solution does not combine sentences properly.
+*** 	Make sure you append the items to join with "and", and conjoin at the end.
+*** FAIL: test_cases/q3/pacphysics_transition.test
+*** 	NO PASS
+*** 	student result: "(P[1,1]_1 <=> ((((P[1,2]_0 & South_0) | (P[1,0]_0 & North_0)) | (P[2,1]_0 & West_0)) | (P[0,1]_0 & East_0))) (P[1,1]_2 <=> ((((P[1,2]_1 & South_1) | (P[1,0]_1 & North_1)) | (P[2,1]_1 & West_1)) | (P[0,1]_1 & East_1))) (P[1,1]_1 <=> ((P[1,2]_0 & South_0) | (P[2,1]_0 & West_0))) None"
+*** 	correct result: "(P[1,1]_1 <=> ((P[1,2]_0 & South_0) | (P[1,0]_0 & North_0) | (P[2,1]_0 & West_0) | (P[0,1]_0 & East_0))) (P[1,1]_2 <=> ((P[1,2]_1 & South_1) | (P[1,0]_1 & North_1) | (P[2,1]_1 & West_1) | (P[0,1]_1 & East_1))) (P[1,1]_1 <=> ((P[1,2]_0 & South_0) | (P[2,1]_0 & West_0))) None"
+
+### Question q3: 0/4 ###
+
+
+Question q4
+===========
+
+[LogicAgent] using problem type PositionPlanningProblem
+*** Method not implemented: positionLogicPlan at line 479 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q4: 0/4 ###
+
+
+Question q5
+===========
+
+[LogicAgent] using problem type FoodPlanningProblem
+*** Method not implemented: foodLogicPlan at line 508 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q5: 0/3 ###
+
+
+Question q6
+===========
+
+[LogicAgent] using problem type LocalizationProblem
+rendering walls beforehand
+*** Method not implemented: localization at line 527 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q6: 0/4 ###
+
+
+Question q7
+===========
+
+[LogicAgent] using problem type MappingProblem
+*** Method not implemented: mapping at line 559 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q7: 0/3 ###
+
+
+Question q8
+===========
+
+[LogicAgent] using problem type SLAMProblem
+*** Method not implemented: slam at line 591 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** FAIL: Terminated with a string exception.
+
+### Question q8: 0/4 ###
+
+
+Finished at 23:23:36
+
+Provisional grades
+==================
+Question q1: 2/2
+Question q2: 2/2
+Question q3: 0/4
+Question q4: 0/4
+Question q5: 0/3
+Question q6: 0/4
+Question q7: 0/3
+Question q8: 0/4
+------------------
+Total: 4/26
