@@ -412,14 +412,8 @@ def checkLocationSatisfiability(x1_y1: Tuple[int, int], x0_y0: Tuple[int, int], 
 
     KB.append(PropSymbolExpr(pacman_str,x0,y0,time=0))
     KB_expression =  conjoin(KB)
-    print(KB_expression)
-    print("|||||||||||||||||||")
     model_pos = findModel(KB_expression & PropSymbolExpr(pacman_str,x1,y1,time=1))
     model_neg = findModel(KB_expression & ~PropSymbolExpr(pacman_str,x1,y1,time=1))
-    print("positive model")
-    print(model_pos)
-    print("model neg")
-    print(model_neg)
     return model_pos,model_neg
     "*** END YOUR CODE HERE ***"
 
@@ -447,11 +441,52 @@ def positionLogicPlan(problem) -> List:
     KB = []
 
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    pacman_start = PropSymbolExpr(pacman_str,x0,y0,time=0)
+    for coord in non_wall_coords: 
+        if coord == (x0,y0):
+            continue
+        pacman_start = pacman_start & ~PropSymbolExpr(pacman_str,coord[0],coord[1],time=0)
+    
+    pacman_start = to_cnf(pacman_start)
+    KB.append(pacman_start)
+    
+    path_found = False
+    current_time = 1
+    while path_found == False:    
+        
+        position_statements = []
+        for coord in non_wall_coords: 
+            position_statements.append(PropSymbolExpr(pacman_str
+                                                      ,coord[0],coord[1]
+                                                      ,current_time))
+        position_statement = exactlyOne(position_statements)
+        KB.append(position_statement)
+        
+        action_statements = []
+        for action in actions:
+            action_statements.append(PropSymbolExpr(action,time=current_time-1))
+        action_statement = exactlyOne(action_statements)
+        KB.append(action_statement)
+
+        for coord in non_wall_coords:
+            expression = pacmanSuccessorAxiomSingle(coord[0],coord[1],
+                                                    current_time,walls_grid) 
+            KB.append(expression)
+        
+        query = PropSymbolExpr(pacman_str,xg,yg,time=current_time)
+        knowledge_base_expression = conjoin(KB)
+        model = findModel(knowledge_base_expression & query)
+        if model == False:
+            current_time += 1
+            continue
+        else:
+            pacman_actions = extractActionSequence(model, actions)
+            return pacman_actions 
     "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________
 # QUESTION 5
+
 
 def foodLogicPlan(problem) -> List:
     """
