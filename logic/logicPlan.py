@@ -509,10 +509,62 @@ def foodLogicPlan(problem) -> List:
     actions = [ 'North', 'South', 'East', 'West' ]
 
     KB = []
-
     "*** BEGIN YOUR CODE HERE ***"
-    util.raiseNotDefined()
-    "*** END YOUR CODE HERE ***"
+    KB.append(PropSymbolExpr(pacman_str,x0,y0,time=0))
+
+    for food_pos in food: 
+        KB.append(PropSymbolExpr(food_str,food_pos[0],food_pos[1],time=0))
+   
+    positions = []
+    for coord in non_wall_coords: 
+        positions.append(PropSymbolExpr(pacman_str,coord[0],coord[1],time=0))
+
+    position_expression = exactlyOne(positions)
+    KB.append(position_expression)
+
+    current_time = 1 
+
+    solution_found = False
+
+    while solution_found == False: 
+
+        actions_list = []
+        for action in actions: 
+            actions_list.append(PropSymbolExpr(action,time=current_time-1))
+        action_expression = exactlyOne(actions_list)
+        KB.append(action_expression)
+
+        successor_list = []
+        for coord in non_wall_coords:
+            successor = pacmanSuccessorAxiomSingle(coord[0],coord[1],current_time,
+                                                   walls)
+            KB.append(successor)
+        
+        
+        food_axioms = []
+        for food_coord in food:
+            KB.append(PropSymbolExpr(food_str,food_coord[0],food_coord[1],time=current_time) %
+                                (PropSymbolExpr(food_str,food_coord[0],food_coord[1],time=current_time-1) & 
+                                ~PropSymbolExpr(pacman_str,food_coord[0],food_coord[1],time=current_time-1)))
+        
+        local_position_constraints = []
+        for coord in non_wall_coords:   
+            local_position_constraints.append(PropSymbolExpr(pacman_str,coord[0],coord[1],time=current_time))
+        position_constraints = exactlyOne(local_position_constraints)
+        KB.append(position_constraints)
+
+        food_goal_list = []
+        for food_coord in food:
+            food_goal_list.append(~PropSymbolExpr(food_str,food_coord[0],food_coord[1],time=current_time))
+
+        goal_condition = conjoin(food_goal_list)
+        model = findModel(conjoin(KB) & goal_condition)
+        if model:
+                action_output = extractActionSequence(model,actions)
+                return action_output 
+        else:
+            current_time += 1
+        "*** END YOUR CODE HERE ***"
 
 #______________________________________________________________________________
 # QUESTION 6
