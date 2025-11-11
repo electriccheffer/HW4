@@ -1,4 +1,4 @@
-Starting on 11-5 at 4:18:19
+Starting on 11-10 at 19:45:22
 
 Question q1
 ===========
@@ -54,16 +54,7 @@ Average Score: 0.0
 Scores:        0.0
 Win Rate:      0/1 (0.00)
 Record:        Loss
-(WALL[0,0] & WALL[0,1] & WALL[0,2] & WALL[0,3] & WALL[1,0] & WALL[1,3] & WALL[2,0] & WALL[2,1] & WALL[2,2] & WALL[2,3] & (WALL[0,0] >> ~P[0,0]_0) & (WALL[0,1] >> ~P[0,1]_0) & (WALL[0,2] >> ~P[0,2]_0) & (WALL[0,3] >> ~P[0,3]_0) & (WALL[1,0] >> ~P[1,0]_0) & (WALL[1,1] >> ~P[1,1]_0) & (WALL[1,2] >> ~P[1,2]_0) & (WALL[1,3] >> ~P[1,3]_0) & (WALL[2,0] >> ~P[2,0]_0) & (WALL[2,1] >> ~P[2,1]_0) & (WALL[2,2] >> ~P[2,2]_0) & (WALL[2,3] >> ~P[2,3]_0) & (P[1,1]_0 | P[1,2]_0) & (~P[1,1]_0 | ~P[1,2]_0) & (North_0 | South_0 | East_0 | West_0) & (~North_0 | ~South_0) & (~North_0 | ~East_0) & (~North_0 | ~West_0) & (~South_0 | ~East_0) & (~South_0 | ~West_0) & (~East_0 | ~West_0) & (WALL[0,0] >> ~P[0,0]_1) & (WALL[0,1] >> ~P[0,1]_1) & (WALL[0,2] >> ~P[0,2]_1) & (WALL[0,3] >> ~P[0,3]_1) & (WALL[1,0] >> ~P[1,0]_1) & (WALL[1,1] >> ~P[1,1]_1) & (WALL[1,2] >> ~P[1,2]_1) & (WALL[1,3] >> ~P[1,3]_1) & (WALL[2,0] >> ~P[2,0]_1) & (WALL[2,1] >> ~P[2,1]_1) & (WALL[2,2] >> ~P[2,2]_1) & (WALL[2,3] >> ~P[2,3]_1) & (P[1,1]_1 | P[1,2]_1) & (~P[1,1]_1 | ~P[1,2]_1) & (North_1 | South_1 | East_1 | West_1) & (~North_1 | ~South_1) & (~North_1 | ~East_1) & (~North_1 | ~West_1) & (~South_1 | ~East_1) & (~South_1 | ~West_1) & (~East_1 | ~West_1) & (P[1,1]_1 <=> (P[1,2]_0 & South_0)) & (P[1,2]_1 <=> (P[1,1]_0 & North_0)) & P[1,1]_0)
-|||||||||||||||||||
-positive model
-{WALL[0,0]: True, WALL[0,1]: True, WALL[0,2]: True, WALL[0,3]: True, WALL[1,0]: True, WALL[1,3]: True, WALL[2,0]: True, WALL[2,1]: True, WALL[2,2]: True, WALL[2,3]: True, P[0,0]_0: False, P[0,1]_0: False, P[0,2]_0: False, P[0,3]_0: False, P[1,0]_0: False, WALL[1,1]: False, P[1,1]_0: True, P[1,2]_0: False, WALL[1,2]: False, P[1,3]_0: False, P[2,0]_0: False, P[2,1]_0: False, P[2,2]_0: False, P[2,3]_0: False, North_0: True, West_0: False, South_0: False, East_0: False, P[0,0]_1: False, P[0,1]_1: False, P[0,2]_1: False, P[0,3]_1: False, P[1,0]_1: False, P[1,1]_1: False, P[1,2]_1: True, P[1,3]_1: False, P[2,0]_1: False, P[2,1]_1: False, P[2,2]_1: False, P[2,3]_1: False, North_1: False, South_1: False, West_1: False, East_1: True}
-model neg
-False
-*** FAIL: test_cases/q3/location_satisfiability1.test
-*** 	Student model does not assign the correct value for variable East_1
-*** 	Student value for East_1: True
-*** 	Correct value for East_1: False
+*** PASS: test_cases/q3/location_satisfiability1.test
 *** Testing checkLocationSatisfiability
 [LogicAgent] using problem type LocMapProblem
 Ending game
@@ -71,15 +62,7 @@ Average Score: 0.0
 Scores:        0.0
 Win Rate:      0/1 (0.00)
 Record:        Loss
-(WALL[0,0] & WALL[0,1] & WALL[0,2] & WALL[0,3] & WALL[0,4] & WALL[1,0] & WALL[1,1] & WALL[1,3] & WALL[1,4] & WALL[2,0] & WALL[2,4] & WALL[3,0] & WALL[3,1] & WALL[3,3] & WALL[3,4] & WALL[4,0] & WALL[4,1] & WALL[4,2] & WALL[4,3] & WALL[4,4] & (WALL[0,0] >> ~P[0,0]_0) & (WALL[0,1] >> ~P[0,1]_0) & (WALL[0,2] >> ~P[0,2]_0) & (WALL[0,3] >> ~P[0,3]_0) & (WALL[0,4] >> ~P[0,4]_0) & (WALL[1,0] >> ~P[1,0]_0) & (WALL[1,1] >> ~P[1,1]_0) & (WALL[1,2] >> ~P[1,2]_0) & (WALL[1,3] >> ~P[1,3]_0) & (WALL[1,4] >> ~P[1,4]_0) & (WALL[2,0] >> ~P[2,0]_0) & (WALL[2,1] >> ~P[2,1]_0) & (WALL[2,2] >> ~P[2,2]_0) & (WALL[2,3] >> ~P[2,3]_0) & (WALL[2,4] >> ~P[2,4]_0) & (WALL[3,0] >> ~P[3,0]_0) & (WALL[3,1] >> ~P[3,1]_0) & (WALL[3,2] >> ~P[3,2]_0) & (WALL[3,3] >> ~P[3,3]_0) & (WALL[3,4] >> ~P[3,4]_0) & (WALL[4,0] >> ~P[4,0]_0) & (WALL[4,1] >> ~P[4,1]_0) & (WALL[4,2] >> ~P[4,2]_0) & (WALL[4,3] >> ~P[4,3]_0) & (WALL[4,4] >> ~P[4,4]_0) & (P[1,1]_0 | P[1,2]_0 | P[1,3]_0 | P[2,1]_0 | P[2,2]_0 | P[2,3]_0 | P[3,1]_0 | P[3,2]_0 | P[3,3]_0) & (~P[1,1]_0 | ~P[1,2]_0) & (~P[1,1]_0 | ~P[1,3]_0) & (~P[1,1]_0 | ~P[2,1]_0) & (~P[1,1]_0 | ~P[2,2]_0) & (~P[1,1]_0 | ~P[2,3]_0) & (~P[1,1]_0 | ~P[3,1]_0) & (~P[1,1]_0 | ~P[3,2]_0) & (~P[1,1]_0 | ~P[3,3]_0) & (~P[1,2]_0 | ~P[1,3]_0) & (~P[1,2]_0 | ~P[2,1]_0) & (~P[1,2]_0 | ~P[2,2]_0) & (~P[1,2]_0 | ~P[2,3]_0) & (~P[1,2]_0 | ~P[3,1]_0) & (~P[1,2]_0 | ~P[3,2]_0) & (~P[1,2]_0 | ~P[3,3]_0) & (~P[1,3]_0 | ~P[2,1]_0) & (~P[1,3]_0 | ~P[2,2]_0) & (~P[1,3]_0 | ~P[2,3]_0) & (~P[1,3]_0 | ~P[3,1]_0) & (~P[1,3]_0 | ~P[3,2]_0) & (~P[1,3]_0 | ~P[3,3]_0) & (~P[2,1]_0 | ~P[2,2]_0) & (~P[2,1]_0 | ~P[2,3]_0) & (~P[2,1]_0 | ~P[3,1]_0) & (~P[2,1]_0 | ~P[3,2]_0) & (~P[2,1]_0 | ~P[3,3]_0) & (~P[2,2]_0 | ~P[2,3]_0) & (~P[2,2]_0 | ~P[3,1]_0) & (~P[2,2]_0 | ~P[3,2]_0) & (~P[2,2]_0 | ~P[3,3]_0) & (~P[2,3]_0 | ~P[3,1]_0) & (~P[2,3]_0 | ~P[3,2]_0) & (~P[2,3]_0 | ~P[3,3]_0) & (~P[3,1]_0 | ~P[3,2]_0) & (~P[3,1]_0 | ~P[3,3]_0) & (~P[3,2]_0 | ~P[3,3]_0) & (North_0 | South_0 | East_0 | West_0) & (~North_0 | ~South_0) & (~North_0 | ~East_0) & (~North_0 | ~West_0) & (~South_0 | ~East_0) & (~South_0 | ~West_0) & (~East_0 | ~West_0) & (WALL[0,0] >> ~P[0,0]_1) & (WALL[0,1] >> ~P[0,1]_1) & (WALL[0,2] >> ~P[0,2]_1) & (WALL[0,3] >> ~P[0,3]_1) & (WALL[0,4] >> ~P[0,4]_1) & (WALL[1,0] >> ~P[1,0]_1) & (WALL[1,1] >> ~P[1,1]_1) & (WALL[1,2] >> ~P[1,2]_1) & (WALL[1,3] >> ~P[1,3]_1) & (WALL[1,4] >> ~P[1,4]_1) & (WALL[2,0] >> ~P[2,0]_1) & (WALL[2,1] >> ~P[2,1]_1) & (WALL[2,2] >> ~P[2,2]_1) & (WALL[2,3] >> ~P[2,3]_1) & (WALL[2,4] >> ~P[2,4]_1) & (WALL[3,0] >> ~P[3,0]_1) & (WALL[3,1] >> ~P[3,1]_1) & (WALL[3,2] >> ~P[3,2]_1) & (WALL[3,3] >> ~P[3,3]_1) & (WALL[3,4] >> ~P[3,4]_1) & (WALL[4,0] >> ~P[4,0]_1) & (WALL[4,1] >> ~P[4,1]_1) & (WALL[4,2] >> ~P[4,2]_1) & (WALL[4,3] >> ~P[4,3]_1) & (WALL[4,4] >> ~P[4,4]_1) & (P[1,1]_1 | P[1,2]_1 | P[1,3]_1 | P[2,1]_1 | P[2,2]_1 | P[2,3]_1 | P[3,1]_1 | P[3,2]_1 | P[3,3]_1) & (~P[1,1]_1 | ~P[1,2]_1) & (~P[1,1]_1 | ~P[1,3]_1) & (~P[1,1]_1 | ~P[2,1]_1) & (~P[1,1]_1 | ~P[2,2]_1) & (~P[1,1]_1 | ~P[2,3]_1) & (~P[1,1]_1 | ~P[3,1]_1) & (~P[1,1]_1 | ~P[3,2]_1) & (~P[1,1]_1 | ~P[3,3]_1) & (~P[1,2]_1 | ~P[1,3]_1) & (~P[1,2]_1 | ~P[2,1]_1) & (~P[1,2]_1 | ~P[2,2]_1) & (~P[1,2]_1 | ~P[2,3]_1) & (~P[1,2]_1 | ~P[3,1]_1) & (~P[1,2]_1 | ~P[3,2]_1) & (~P[1,2]_1 | ~P[3,3]_1) & (~P[1,3]_1 | ~P[2,1]_1) & (~P[1,3]_1 | ~P[2,2]_1) & (~P[1,3]_1 | ~P[2,3]_1) & (~P[1,3]_1 | ~P[3,1]_1) & (~P[1,3]_1 | ~P[3,2]_1) & (~P[1,3]_1 | ~P[3,3]_1) & (~P[2,1]_1 | ~P[2,2]_1) & (~P[2,1]_1 | ~P[2,3]_1) & (~P[2,1]_1 | ~P[3,1]_1) & (~P[2,1]_1 | ~P[3,2]_1) & (~P[2,1]_1 | ~P[3,3]_1) & (~P[2,2]_1 | ~P[2,3]_1) & (~P[2,2]_1 | ~P[3,1]_1) & (~P[2,2]_1 | ~P[3,2]_1) & (~P[2,2]_1 | ~P[3,3]_1) & (~P[2,3]_1 | ~P[3,1]_1) & (~P[2,3]_1 | ~P[3,2]_1) & (~P[2,3]_1 | ~P[3,3]_1) & (~P[3,1]_1 | ~P[3,2]_1) & (~P[3,1]_1 | ~P[3,3]_1) & (~P[3,2]_1 | ~P[3,3]_1) & (North_1 | South_1 | East_1 | West_1) & (~North_1 | ~South_1) & (~North_1 | ~East_1) & (~North_1 | ~West_1) & (~South_1 | ~East_1) & (~South_1 | ~West_1) & (~East_1 | ~West_1) & (P[1,1]_1 <=> ((P[1,2]_0 & South_0) | (P[2,1]_0 & West_0))) & (P[1,2]_1 <=> (P[2,2]_0 & West_0)) & (P[1,3]_1 <=> ((P[1,2]_0 & North_0) | (P[2,3]_0 & West_0))) & (P[2,1]_1 <=> (P[2,2]_0 & South_0)) & (P[2,2]_1 <=> ((P[2,3]_0 & South_0) | (P[2,1]_0 & North_0) | (P[3,2]_0 & West_0) | (P[1,2]_0 & East_0))) & (P[2,3]_1 <=> (P[2,2]_0 & North_0)) & (P[3,1]_1 <=> ((P[3,2]_0 & South_0) | (P[2,1]_0 & East_0))) & (P[3,2]_1 <=> (P[2,2]_0 & East_0)) & (P[3,3]_1 <=> ((P[3,2]_0 & North_0) | (P[2,3]_0 & East_0))) & P[2,2]_0)
-|||||||||||||||||||
-positive model
-{WALL[0,0]: True, WALL[0,1]: True, WALL[0,2]: True, WALL[0,3]: True, WALL[0,4]: True, WALL[1,0]: True, WALL[1,1]: True, WALL[1,3]: True, WALL[1,4]: True, WALL[2,0]: True, WALL[2,4]: True, WALL[3,0]: True, WALL[3,1]: True, WALL[3,3]: True, WALL[3,4]: True, WALL[4,0]: True, WALL[4,1]: True, WALL[4,2]: True, WALL[4,3]: True, WALL[4,4]: True, P[0,0]_0: False, P[0,1]_0: False, P[0,2]_0: False, P[0,3]_0: False, P[0,4]_0: False, P[1,0]_0: False, P[1,1]_0: False, P[1,2]_0: False, WALL[1,2]: False, P[1,3]_0: False, P[1,4]_0: False, P[2,0]_0: False, P[2,1]_0: False, WALL[2,1]: False, WALL[2,2]: False, P[2,2]_0: True, WALL[2,3]: False, P[2,3]_0: False, P[2,4]_0: False, P[3,0]_0: False, P[3,1]_0: False, P[3,2]_0: False, WALL[3,2]: False, P[3,3]_0: False, P[3,4]_0: False, P[4,0]_0: False, P[4,1]_0: False, P[4,2]_0: False, P[4,3]_0: False, P[4,4]_0: False, North_0: False, West_0: False, South_0: False, East_0: True, P[0,0]_1: False, P[0,1]_1: False, P[0,2]_1: False, P[0,3]_1: False, P[0,4]_1: False, P[1,0]_1: False, P[1,1]_1: False, P[1,2]_1: False, P[1,3]_1: False, P[1,4]_1: False, P[2,0]_1: False, P[2,1]_1: False, P[2,2]_1: False, P[2,3]_1: False, P[2,4]_1: False, P[3,0]_1: False, P[3,1]_1: False, P[3,2]_1: True, P[3,3]_1: False, P[3,4]_1: False, P[4,0]_1: False, P[4,1]_1: False, P[4,2]_1: False, P[4,3]_1: False, P[4,4]_1: False, North_1: False, South_1: False, West_1: False, East_1: True}
-model neg
-{WALL[0,0]: True, WALL[0,1]: True, WALL[0,2]: True, WALL[0,3]: True, WALL[0,4]: True, WALL[1,0]: True, WALL[1,1]: True, WALL[1,3]: True, WALL[1,4]: True, WALL[2,0]: True, WALL[2,4]: True, WALL[3,0]: True, WALL[3,1]: True, WALL[3,3]: True, WALL[3,4]: True, WALL[4,0]: True, WALL[4,1]: True, WALL[4,2]: True, WALL[4,3]: True, WALL[4,4]: True, P[0,0]_0: False, P[0,1]_0: False, P[0,2]_0: False, P[0,3]_0: False, P[0,4]_0: False, P[1,0]_0: False, P[1,1]_0: False, P[1,2]_0: False, WALL[1,2]: False, P[1,3]_0: False, P[1,4]_0: False, P[2,0]_0: False, P[2,1]_0: False, WALL[2,1]: False, WALL[2,2]: False, P[2,2]_0: True, WALL[2,3]: False, P[2,3]_0: False, P[2,4]_0: False, P[3,0]_0: False, P[3,1]_0: False, P[3,2]_0: False, WALL[3,2]: False, P[3,3]_0: False, P[3,4]_0: False, P[4,0]_0: False, P[4,1]_0: False, P[4,2]_0: False, P[4,3]_0: False, P[4,4]_0: False, North_0: False, West_0: False, South_0: True, East_0: False, P[0,0]_1: False, P[0,1]_1: False, P[0,2]_1: False, P[0,3]_1: False, P[0,4]_1: False, P[1,0]_1: False, P[1,1]_1: False, P[1,2]_1: False, P[1,3]_1: False, P[1,4]_1: False, P[2,0]_1: False, P[2,1]_1: True, P[2,2]_1: False, P[2,3]_1: False, P[2,4]_1: False, P[3,0]_1: False, P[3,1]_1: False, P[3,2]_1: False, P[3,3]_1: False, P[3,4]_1: False, P[4,0]_1: False, P[4,1]_1: False, P[4,2]_1: False, P[4,3]_1: False, P[4,4]_1: False, North_1: False, South_1: False, West_1: False, East_1: True}
-*** FAIL: test_cases/q3/location_satisfiability2.test
-*** 	Student solution differed from autograder solution for model_at_x1_y1_1
-*** 	Student model found satisfiable solution but no satisfiable solution exists.
+*** PASS: test_cases/q3/location_satisfiability2.test
 *** Testing pacphysicsAxioms
 *** PASS: test_cases/q3/pacphysics1.test
 *** Testing pacphysicsAxioms
@@ -87,27 +70,81 @@ model neg
 *** PASS: test_cases/q3/pacphysics_transition.test
 *** 	PASS
 
-### Question q3: 2/4 ###
+### Question q3: 4/4 ###
 
 
 Question q4
 ===========
 
 [LogicAgent] using problem type PositionPlanningProblem
-*** Method not implemented: positionLogicPlan at line 450 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
-*** FAIL: Terminated with a string exception.
+Path found with total cost of 2 in 0.0 seconds
+Nodes expanded: 0
+Pacman emerges victorious! Score: 508
+Average Score: 508.0
+Scores:        508.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+*** PASS: test_cases/q4/positionLogicPlan1.test
+*** 	pacman layout:		maze2x2
+*** 	solution score:		508
+*** 	solution path:		West South
+[LogicAgent] using problem type PositionPlanningProblem
+Path found with total cost of 8 in 0.1 seconds
+Nodes expanded: 0
+Pacman emerges victorious! Score: 502
+Average Score: 502.0
+Scores:        502.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+*** PASS: test_cases/q4/positionLogicPlan2.test
+*** 	pacman layout:		tinyMaze
+*** 	solution score:		502
+*** 	solution path:		South South West South West West South West
+[LogicAgent] using problem type PositionPlanningProblem
+Path found with total cost of 19 in 22.6 seconds
+Nodes expanded: 0
+Pacman emerges victorious! Score: 491
+Average Score: 491.0
+Scores:        491.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+*** PASS: test_cases/q4/positionLogicPlan3.test
+*** 	pacman layout:		smallMaze
+*** 	solution score:		491
+*** 	solution path:		East East South South West South South West West South West West West West West West West West West
 
-### Question q4: 0/4 ###
+### Question q4: 4/4 ###
 
 
 Question q5
 ===========
 
 [LogicAgent] using problem type FoodPlanningProblem
-*** Method not implemented: foodLogicPlan at line 479 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
-*** FAIL: Terminated with a string exception.
+Path found with total cost of 8 in 0.0 seconds
+Nodes expanded: 0
+Pacman emerges victorious! Score: 513
+Average Score: 513.0
+Scores:        513.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+*** PASS: test_cases/q5/foodLogicPlan1.test
+*** 	pacman layout:		testSearch
+*** 	solution score:		513
+*** 	solution path:		West East East South South West West East
+[LogicAgent] using problem type FoodPlanningProblem
+Path found with total cost of 28 in 3.7 seconds
+Nodes expanded: 0
+Pacman emerges victorious! Score: 573
+Average Score: 573.0
+Scores:        573.0
+Win Rate:      1/1 (1.00)
+Record:        Win
+*** PASS: test_cases/q5/foodLogicPlan2.test
+*** 	pacman layout:		tinySearch
+*** 	solution score:		573
+*** 	solution path:		South South West East East East East North North North North West West West West West West East East East South South West West West South South West
 
-### Question q5: 0/3 ###
+### Question q5: 3/3 ###
 
 
 Question q6
@@ -115,7 +152,7 @@ Question q6
 
 [LogicAgent] using problem type LocalizationProblem
 rendering walls beforehand
-*** Method not implemented: localization at line 498 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** Method not implemented: localization at line 585 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
 *** FAIL: Terminated with a string exception.
 
 ### Question q6: 0/4 ###
@@ -125,7 +162,7 @@ Question q7
 ===========
 
 [LogicAgent] using problem type MappingProblem
-*** Method not implemented: mapping at line 530 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** Method not implemented: mapping at line 617 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
 *** FAIL: Terminated with a string exception.
 
 ### Question q7: 0/3 ###
@@ -135,23 +172,23 @@ Question q8
 ===========
 
 [LogicAgent] using problem type SLAMProblem
-*** Method not implemented: slam at line 562 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
+*** Method not implemented: slam at line 649 of /home/electricchef/Desktop/Classes/Fall25/AI/HW4/logic/logicPlan.py
 *** FAIL: Terminated with a string exception.
 
 ### Question q8: 0/4 ###
 
 
-Finished at 4:18:19
+Finished at 19:45:49
 
 Provisional grades
 ==================
 Question q1: 2/2
 Question q2: 2/2
-Question q3: 2/4
-Question q4: 0/4
-Question q5: 0/3
+Question q3: 4/4
+Question q4: 4/4
+Question q5: 3/3
 Question q6: 0/4
 Question q7: 0/3
 Question q8: 0/4
 ------------------
-Total: 6/26
+Total: 15/26
